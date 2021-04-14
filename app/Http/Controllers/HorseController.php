@@ -19,12 +19,33 @@ class HorseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $horses = Horse::all();
-       return view('horse.index', ['horses' => $horses]);
 
+    public function index(Request $request)
+    {
+       
+       
+         if ('runs' == $request->sort) {
+            $horses = Horse::orderBy('runs')->get();
+        }
+        elseif ('wins' == $request->sort) {
+            $horses = Horse::orderBy('wins')->get();
+        }
+        else {
+            $horses = Horse::all();
+            $horses = Horse::orderBy('name')->get();
+           
+           
+        }
+       
+        return view('horse.index', ['horses' => $horses]);
     }
+
+    // public function index()
+    // {
+    //     $horses = Horse::all();
+    //    return view('horse.index', ['horses' => $horses]);
+
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -145,10 +166,10 @@ class HorseController extends Controller
     public function destroy(Horse $horse)
     {
         
-        // if($horse->horseMember->count() !==0){
+        if($horse->horseBetter->count() !==0){
             
-        //     return redirect()->back()->with('info_message', 'Cannot delete horse, because it linked to better');
-        // }
+            return redirect()->back()->with('info_message', 'Cannot delete horse, because it linked to better');
+        }
         $horse->delete();
         return redirect()->route('horse.index')->with('success_message', 'Horse deleted!');
     

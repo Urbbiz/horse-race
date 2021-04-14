@@ -5,7 +5,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-{{-- 
+
                     <h2>Betters List</h2>
                     <div class="make-inline">
                         <form action="{{route('better.index')}}" method="get" class="make-inline ">
@@ -35,7 +35,7 @@
 
                         <a href="{{route('better.index')}}" class="btn btn-info">Clear filter</a>
                     </div>
- --}}
+
 
 
 

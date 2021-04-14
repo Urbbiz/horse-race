@@ -15,7 +15,7 @@
           <div class="card">
             <div class="card-header">
                <h2>Horse List</h2>
-               <a href="{{route('horse.index',['sort'=>'name'])}}">Sort by Name</a>
+               <a href="{{route('horse.index',['sort'=>'runs'])}}">Sort by Runs</a>
                <a href="{{route('horse.index',['sort'=>'wins'])}}">Sort by Wins</a>
                <a href="{{route('horse.index')}}">Default</a>
             </div>
